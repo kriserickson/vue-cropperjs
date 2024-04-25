@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { h, nextTick  } from 'vue'
 import Cropper from 'cropperjs'
 
 const previewPropType = typeof window === 'undefined'

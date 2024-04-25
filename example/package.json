@@ -6,11 +6,12 @@
     "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.0.4",
-    "vue-cropperjs": "../"
+    "vue": "3.4.25",
+    "vue-cropperjs": "../",
+    "@vitejs/plugin-vue": "^5.0.4"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.4",
-    "vite": "^1.0.0-rc.13"
+    "@vue/compiler-sfc": "^3.4.25",
+    "vite": "^5.2.10"
   }
 }
