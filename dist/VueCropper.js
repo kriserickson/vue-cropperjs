@@ -21,7 +21,7 @@ exports.default = {
     var crossorigin = this.crossorigin || undefined;
 
     return (0, _vue.h)('div', { style: this.containerStyle }, [(0, _vue.h)('img', {
-      ref: 'crop-img',
+      ref: 'img',
       src: this.src,
       alt: this.alt || 'image',
       style: [{ 'max-width': '100%' }, this.imgStyle],
@@ -155,8 +155,15 @@ exports.default = {
         props[key] = this[key];
       }
     }
-
-    this.cropper = new _cropperjs2.default(this.$refs['crop-img'], props);
+    var img = this.$refs.img;
+    if (!img) {
+      img = this.$el.querySelector('img');
+    }
+    if (img) {
+      this.cropper = new _cropperjs2.default(img, props);
+    } else {
+      console.warn('No image element found');
+    }
   },
 
   methods: {

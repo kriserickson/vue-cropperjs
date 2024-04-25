@@ -11,7 +11,7 @@ export default {
 
     return h('div', { style: this.containerStyle }, [
       h('img', {
-        ref: 'crop-img',
+        ref: 'img',
         src: this.src,
         alt: this.alt || 'image',
         style: [
@@ -146,8 +146,15 @@ export default {
         props[key] = this[key]
       }
     }
-
-    this.cropper = new Cropper(this.$refs['crop-img'], props)
+    let img = this.$refs.img;
+    if (!img) {
+      img = this.$el.querySelector('img');
+    }
+    if (img) {
+      this.cropper = new Cropper(img, props)
+    } else {
+      console.warn('No image element found')
+    }
   },
   methods: {
     // Reset the image and crop box to their initial states
