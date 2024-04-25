@@ -21,7 +21,7 @@ exports.default = {
     var crossorigin = this.crossorigin || undefined;
 
     return (0, _vue.h)('div', { style: this.containerStyle }, [(0, _vue.h)('img', {
-      ref: 'img',
+      ref: 'crop-img',
       src: this.src,
       alt: this.alt || 'image',
       style: [{ 'max-width': '100%' }, this.imgStyle],
@@ -141,8 +141,6 @@ exports.default = {
     zoom: Function
   },
   mounted: function mounted() {
-    var _this = this;
-
     var _$options$props = this.$options.props,
         containerStyle = _$options$props.containerStyle,
         src = _$options$props.src,
@@ -158,13 +156,7 @@ exports.default = {
       }
     }
 
-    if (!this.$refs.img) {
-      (0, _vue.nextTick)().then(function () {
-        _this.cropper = new _cropperjs2.default(_this.$refs.img, props);
-      });
-    } else {
-      this.cropper = new _cropperjs2.default(this.$refs.img, props);
-    }
+    this.cropper = new _cropperjs2.default(this.$refs['crop-img'], props);
   },
 
   methods: {

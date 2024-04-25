@@ -11,7 +11,7 @@ export default {
 
     return h('div', { style: this.containerStyle }, [
       h('img', {
-        ref: 'img',
+        ref: 'crop-img',
         src: this.src,
         alt: this.alt || 'image',
         style: [
@@ -147,13 +147,7 @@ export default {
       }
     }
 
-    if (!this.$refs.img) {
-      nextTick().then(() => {
-        this.cropper = new Cropper(this.$refs.img, props)
-      });
-    } else {
-      this.cropper = new Cropper(this.$refs.img, props)
-    }
+    this.cropper = new Cropper(this.$refs['crop-img'], props)
   },
   methods: {
     // Reset the image and crop box to their initial states
