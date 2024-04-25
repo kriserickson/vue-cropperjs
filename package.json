@@ -1,6 +1,6 @@
 {
   "name": "vue-cropperjs",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "A Vue wrapper component for cropperjs",
   "main": "dist/VueCropper.js",
   "keywords": [
@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "cropperjs": "^1.5.6"
+    "cropperjs": "^1.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
