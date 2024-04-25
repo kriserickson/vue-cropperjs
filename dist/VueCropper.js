@@ -155,8 +155,15 @@ exports.default = {
         props[key] = this[key];
       }
     }
-
-    this.cropper = new _cropperjs2.default(this.$refs.img, props);
+    var img = this.$refs.img;
+    if (!img) {
+      img = this.$el.querySelector('img');
+    }
+    if (img) {
+      this.cropper = new _cropperjs2.default(img, props);
+    } else {
+      console.warn('No image element found');
+    }
   },
 
   methods: {
