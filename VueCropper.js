@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { h, nextTick  } from 'vue'
 import Cropper from 'cropperjs'
 
 const previewPropType = typeof window === 'undefined'
@@ -147,7 +147,13 @@ export default {
       }
     }
 
-    this.cropper = new Cropper(this.$refs.img, props)
+    if (!this.$refs.img) {
+      nextTick().then(() => {
+        this.cropper = new Cropper(this.$refs.img, props)
+      });
+    } else {
+      this.cropper = new Cropper(this.$refs.img, props)
+    }
   },
   methods: {
     // Reset the image and crop box to their initial states

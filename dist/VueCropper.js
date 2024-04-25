@@ -141,6 +141,8 @@ exports.default = {
     zoom: Function
   },
   mounted: function mounted() {
+    var _this = this;
+
     var _$options$props = this.$options.props,
         containerStyle = _$options$props.containerStyle,
         src = _$options$props.src,
@@ -156,7 +158,13 @@ exports.default = {
       }
     }
 
-    this.cropper = new _cropperjs2.default(this.$refs.img, props);
+    if (!this.$refs.img) {
+      (0, _vue.nextTick)().then(function () {
+        _this.cropper = new _cropperjs2.default(_this.$refs.img, props);
+      });
+    } else {
+      this.cropper = new _cropperjs2.default(this.$refs.img, props);
+    }
   },
 
   methods: {
